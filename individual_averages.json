@@ -1,0 +1,38 @@
+{
+  "E": {
+    "avg_seconds": 4750,
+    "avg_time": "1:19:10"
+  },
+  "S1": {
+    "avg_seconds": 3226,
+    "avg_time": "0:53:46"
+  },
+  "F": {
+    "avg_seconds": 4612,
+    "avg_time": "1:16:52"
+  },
+  "A": {
+    "avg_seconds": 3874,
+    "avg_time": "1:04:34"
+  },
+  "D": {
+    "avg_seconds": 4019,
+    "avg_time": "1:06:59"
+  },
+  "C": {
+    "avg_seconds": 3879,
+    "avg_time": "1:04:39"
+  },
+  "B": {
+    "avg_seconds": 4679,
+    "avg_time": "1:17:59"
+  },
+  "S2": {
+    "avg_seconds": 3193,
+    "avg_time": "0:53:13"
+  },
+  "final": {
+    "avg_seconds": 3584,
+    "avg_time": "0:59:44"
+  }
+}
