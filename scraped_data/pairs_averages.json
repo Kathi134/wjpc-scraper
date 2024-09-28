@@ -3,25 +3,25 @@
     "avg_seconds": 4037,
     "avg_time": "1:07:17"
   },
-  "A": {
-    "avg_seconds": 4011,
-    "avg_time": "1:06:51"
-  },
-  "B": {
-    "avg_seconds": 3232,
-    "avg_time": "0:53:52"
-  },
   "S1": {
     "avg_seconds": 2345,
     "avg_time": "0:39:05"
+  },
+  "C": {
+    "avg_seconds": 3992,
+    "avg_time": "1:06:32"
+  },
+  "A": {
+    "avg_seconds": 4011,
+    "avg_time": "1:06:51"
   },
   "S2": {
     "avg_seconds": 2303,
     "avg_time": "0:38:23"
   },
-  "C": {
-    "avg_seconds": 3992,
-    "avg_time": "1:06:32"
+  "B": {
+    "avg_seconds": 3232,
+    "avg_time": "0:53:52"
   },
   "D": {
     "avg_seconds": 2956,

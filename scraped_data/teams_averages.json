@@ -1,4 +1,8 @@
 {
+  "B": {
+    "avg_seconds": 9847,
+    "avg_time": "2:44:07"
+  },
   "A": {
     "avg_seconds": 10537,
     "avg_time": "2:55:37"
@@ -10,9 +14,5 @@
   "final": {
     "avg_seconds": 6995,
     "avg_time": "1:56:35"
-  },
-  "B": {
-    "avg_seconds": 9847,
-    "avg_time": "2:44:07"
   }
 }
