@@ -1,1 +1,1 @@
-run scraper: `scrapy runspider .\<competition>_results.py`
+run scraper: `py .\scrape-wjpc.py`
