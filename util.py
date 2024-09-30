@@ -20,7 +20,7 @@ rules = {
 def hour_stamp_to_sec(stamp, competiton):
     if not stamp:
         return
-    if ':' in stamp :
+    if ':' in stamp:
         h,m,s = stamp.split(':')
         return int(h) * 3600 + int(m) * 60 + int(s)
     else: # using the mpp to estimate the time

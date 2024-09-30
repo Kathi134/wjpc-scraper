@@ -36,12 +36,18 @@ class WjpcSpider(scrapy.Spider):
 
     def parse_average(self, round, response):
         times = response.css('div.tiempo::text').getall()
-        res = list(map(lambda t: hour_stamp_to_sec(t.strip(), self.division_options_key(round)), times))
+        times = [t.strip() for t in times if t.strip()]
+
+        res = list(map(lambda t: hour_stamp_to_sec(t, self.division_options_key(round)), times))
         res = [x for x in res if x is not None]
         avg = int(sum(res) / len(res))
+
+        finishers = list(filter(lambda t: ':' in t, times))
+        
         self.avg_results[round] = {
             'avg_seconds': avg, 
-            'avg_time': str(timedelta(seconds=avg))
+            'avg_time': str(timedelta(seconds=avg)),
+            'finished': len(finishers) / len(times)
         }
 
     def closed(self, _):

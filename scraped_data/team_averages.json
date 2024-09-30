@@ -1,18 +1,22 @@
 {
   "A": {
     "avg_seconds": 10537,
-    "avg_time": "2:55:37"
+    "avg_time": "2:55:37",
+    "finished": 0.23469387755102042
   },
   "B": {
     "avg_seconds": 9847,
-    "avg_time": "2:44:07"
+    "avg_time": "2:44:07",
+    "finished": 0.43
   },
   "C": {
     "avg_seconds": 9063,
-    "avg_time": "2:31:03"
+    "avg_time": "2:31:03",
+    "finished": 0.6274509803921569
   },
   "final": {
     "avg_seconds": 6995,
-    "avg_time": "1:56:35"
+    "avg_time": "1:56:35",
+    "finished": 0.9907407407407407
   }
 }
