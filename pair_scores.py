@@ -18,7 +18,7 @@ with open(f"{data_dir}/{division}_results.json", "r", encoding="utf-8") as file:
 # add results and relative results
 output = {}
 for item in results:
-    competition, name, country, result, placement = item.values() # todo: update scraper accordingly
+    competition, name, country, result, placement = item.values() 
     key = f"{name}"
     if key not in output:
         try:
@@ -31,9 +31,9 @@ for item in results:
         output[key] = {
             "individual_combined_score": avg_score
         }
-    comp_key = competition.replace('pair_','')
+    comp_key = competition.replace(f'{division}_','')
     round_key = 'quarterfinal' if len(comp_key) == 1 else ('semifinal' if len(comp_key) == 2 else 'final')
-    calc_key = 'pair_final' if round_key == 'final' else 'pair'
+    calc_key = f'{division}_final' if round_key == 'final' else division
     output[key] = output[key] | {
         f'{comp_key}_result': result,
         f'{comp_key}_placement': placement,
@@ -59,7 +59,7 @@ def score_rounds(participant, *round_keys):
     return sum(scores) / len(scores)
 
 def average_time(participant):
-    times = [hour_stamp_to_sec(val, 'pair' if not 'final' in key else 'pair_final') for key, val in participant.items() if ('result' in key)]
+    times = [hour_stamp_to_sec(val, division if not 'final' in key else f'{division}_final') for key, val in participant.items() if ('result' in key)]
     if len(times) == 0:
         raise ValueError
     if len(times) < 3: # add penalty for not making it to the finals (because the piece difference biases the average time)

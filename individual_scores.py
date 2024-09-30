@@ -88,7 +88,7 @@ output = {
     key: {
         **value, 
         'actual_rank': value.get('final_placement',200),
-        'improvement_against_prelims': value['score_before_final_rank'] - value.get('final_placement', 181)
+        'improvement_against_prelims': value['score_before_final_rank'] - value.get('final_placement', 200)
     }
     for key, value in output.items()
 }
