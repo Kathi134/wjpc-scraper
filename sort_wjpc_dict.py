@@ -15,6 +15,14 @@ rules = {
                 "avg_placement","avg_placement_rank", "avg_time","avg_time_rank",
                 "score_before_final", "score_before_final_rank", "overall_score", "overall_score_rank", "score_on_unreleased", "score_on_unreleased_rank", 
                 'improvement_against_individual_performances', 'improvement_against_prelims']
+    },
+    'team': {
+        'quarterfinals': list(string.ascii_uppercase[0:3]),
+        'semifinals': [],
+        'order': ['individual_combined_score', 'individual_combined_score_rank',
+                "avg_placement","avg_placement_rank", "avg_time","avg_time_rank",
+                "score_before_final", "score_before_final_rank", "overall_score", "overall_score_rank",
+                'improvement_against_individual_performances', 'improvement_against_prelims']
     }
 }
 
