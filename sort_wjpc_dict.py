@@ -22,7 +22,7 @@ def sort_dict(dict):
             rearranged_results[f'final_relative_time'] = results[f'final_relative_time']
         rearranged_results["actual_rank"] = results["actual_rank"]
         order = ["avg_placement","avg_placement_rank", "avg_time","avg_time_rank",
-                "score_before_final", "score_before_final_rank", "overall_score", "overall_score_rank", "overall_score_on_unreleased", "overall_score_on_unreleased_rank", 
+                "score_before_final", "score_before_final_rank", "overall_score", "overall_score_rank", "score_on_unreleased", "score_on_unreleased_rank", 
                 'improvement_against_prelims']
         for key in order:
             rearranged_results[key] = results[key]

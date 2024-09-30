@@ -1,5 +1,4 @@
 import json
-import string
 from util import hour_stamp_to_sec 
 from datetime import timedelta
 from sort_wjpc_dict import sort_dict
@@ -62,7 +61,7 @@ output = {
         'avg_placement': average_placement(value),
         'overall_score': score_rounds(value, 'q','s','f'), 
         'score_before_final': score_rounds(value, 'q','s'),
-        'overall_score_on_unreleased': score_rounds(value, 's','f'),
+        'score_on_unreleased': score_rounds(value, 's','f'),
     }
     for key, value in output.items()
 }
@@ -73,11 +72,10 @@ sorting_lambdas_on_scores = {
     'avg_placement_rank': lambda item,_: item['avg_placement'],
     'overall_score_rank': lambda item,_: item['overall_score'],
     'score_before_final_rank': lambda item,_: item['score_before_final'],
-    'overall_score_on_unreleased_rank': lambda item,_: item['overall_score_on_unreleased'],
+    'score_on_unreleased_rank': lambda item,_: item['score_on_unreleased'],
 }
 
 for rank_field_name, sorting_fun in sorting_lambdas_on_scores.items():
-    print('sorting by final_score to calculate actual_rank')
     sorted_items = sorted(output.items(), key=lambda item: sorting_fun(item[1], output))
     for rank, (name, values) in enumerate(sorted_items, start=1):
         values[rank_field_name] = rank
@@ -87,7 +85,7 @@ for rank_field_name, sorting_fun in sorting_lambdas_on_scores.items():
 output = { 
     key: {
         **value, 
-        'actual_rank': value.get('final_placement',181),
+        'actual_rank': value.get('final_placement',200),
         'improvement_against_prelims': value['score_before_final_rank'] - value.get('final_placement', 181)
     }
     for key, value in output.items()
