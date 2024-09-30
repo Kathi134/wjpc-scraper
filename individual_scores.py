@@ -92,7 +92,7 @@ output = {
 }
 
 # provide clean output
-output = sort_dict(output)
+output = sort_dict(output, 'individual')
 target_dir = 'scores'
 with open(f"{target_dir}/individual_scores.json", "w", encoding="utf-8") as file:
     file.write(json.dumps(dict(sorted(output.items(), key=lambda item: item[1]['actual_rank']))))
