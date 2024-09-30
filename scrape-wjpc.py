@@ -71,7 +71,9 @@ def parse_pair_results(round, response):
     return [{
         'competition': f'pair_{round}',
         'name': ' / '.join([item.strip() for item in node.css('td[valign="middle"] > div:nth-child(2)::text').getall()]),
-        'result': node.css('td[valign="middle"] .tiempo::text')[0].get().strip()
+        'country': node.css('td[valign="middle"] > div.ver_movil.pais_movil::text').get().strip(),
+        'result': node.css('td[valign="middle"] .tiempo::text')[0].get().strip(),
+        'placement': int(node.css('div.puesto::text').get()),
     } for node in response.css('tr[idresultado]')]    
 
 def parse_team_results(round, response):
@@ -79,7 +81,9 @@ def parse_team_results(round, response):
     return [{
         'competition': f'team_{round}',
         'name': ' / '.join([x.strip() for x in names_selector(node).split('/')]),
-        'result': node.css('td[valign="middle"] .tiempo::text')[0].get().strip()
+        'country': node.css('td[valign="middle"] > div.ver_movil.pais_movil::text').get().strip(),
+        'result': node.css('td[valign="middle"] .tiempo::text')[0].get().strip(),
+        'placement': int(node.css('div.puesto::text').get()),
     } for node in response.css('tr[idresultado]')]        
 
 

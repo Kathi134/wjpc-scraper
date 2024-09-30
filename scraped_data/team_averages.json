@@ -1,11 +1,11 @@
 {
-  "B": {
-    "avg_seconds": 9847,
-    "avg_time": "2:44:07"
-  },
   "A": {
     "avg_seconds": 10537,
     "avg_time": "2:55:37"
+  },
+  "B": {
+    "avg_seconds": 9847,
+    "avg_time": "2:44:07"
   },
   "C": {
     "avg_seconds": 9063,
