@@ -24,7 +24,8 @@ class WjpcSpider(scrapy.Spider):
         self.results = []
 
     def start_requests(self):
-        urls = [f'{self.base_url}/{self.division}/{r}' for r in self.rounds]
+        # needs plural to land on the results page x.x
+        urls = [f'{self.base_url}/{self.division}s/{r}' for r in self.rounds]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)
 
@@ -32,7 +33,6 @@ class WjpcSpider(scrapy.Spider):
         round = response.url.split('/')[-1]
         self.parse_average(round, response)
         self.results += self.parse_results(round, response)
-        self.logger.info(self.division, self.results)
 
     def parse_average(self, round, response):
         times = response.css('div.tiempo::text').getall()
@@ -86,19 +86,19 @@ def parse_team_results(round, response):
 def main():
     process = CrawlerProcess(get_project_settings())
     process.crawl(WjpcSpider,
-        division='individuals',
+        division='individual',
         rounds=list(string.ascii_uppercase[0:6]) + ['S1', 'S2', 'final'],
         division_options_key = lambda _: 'individual',
         parse_results=parse_individual_results
     )
     process.crawl(WjpcSpider,
-        division='pairs',
+        division='pair',
         rounds=list(string.ascii_uppercase[0:4]) + ['S1', 'S2', 'final'],
         division_options_key = lambda r: 'pair_final' if r == 'final' else 'pair',
         parse_results=parse_pair_results
     )
     process.crawl(WjpcSpider,
-        division='teams',
+        division='team',
         rounds=list(string.ascii_uppercase[0:3]) + ['final'],
         division_options_key = lambda _: 'team',
         parse_results=parse_team_results

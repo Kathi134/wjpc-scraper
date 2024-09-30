@@ -5,10 +5,12 @@ from sort_wjpc_dict import sort_dict
 
 WORST_VALUE = 5
 
+division = 'individual'
+
 data_dir = 'scraped_data'
-with open(f"{data_dir}/individuals_averages.json" ,"r") as file:
+with open(f"{data_dir}/{division}_averages.json" ,"r") as file:
     averages = json.load(file)
-with open(f"{data_dir}/individuals_results.json", "r", encoding="utf-8") as file:
+with open(f"{data_dir}/{division}_results.json", "r", encoding="utf-8") as file:
     results = json.load(file)
 
 # add results and relative results
@@ -19,12 +21,12 @@ for item in results:
     if key not in output:
         output[key] = {}
 
-    comp_key = competition.replace('individual_','')
+    comp_key = competition.replace(f'{division}_','')
     round_key = 'quarterfinal' if len(comp_key) == 1 else ('semifinal' if len(comp_key) == 2 else 'final')
     output[key] = output[key] | {
         f'{comp_key}_result': result,
         f'{comp_key}_placement': placement,
-        f'{comp_key}_relative_time': hour_stamp_to_sec(result, 'individual') / averages[comp_key]['avg_seconds']
+        f'{comp_key}_relative_time': hour_stamp_to_sec(result, division) / averages[comp_key]['avg_seconds']
     }
 
 # add scores that combine performances of multiple rounds
@@ -46,7 +48,7 @@ def score_rounds(participant, *round_keys):
     return sum(scores) / len(scores)
 
 def average_time(participant):
-    times = [hour_stamp_to_sec(val, 'individual') for key, val in participant.items() if ('result' in key)]
+    times = [hour_stamp_to_sec(val, division) for key, val in participant.items() if ('result' in key)]
     seconds = sum(times) / len(times)
     return str(timedelta(seconds=int(round(seconds,0))))
 
@@ -92,9 +94,9 @@ output = {
 }
 
 # provide clean output
-output = sort_dict(output, 'individual')
+output = sort_dict(output, division)
 target_dir = 'scores'
-with open(f"{target_dir}/individual_scores.json", "w", encoding="utf-8") as file:
+with open(f"{target_dir}/{division}_scores.json", "w", encoding="utf-8") as file:
     file.write(json.dumps(dict(sorted(output.items(), key=lambda item: item[1]['actual_rank']))))
         
         
