@@ -14,6 +14,10 @@ rules = {
     'individual': {
         'time': 90,
         'pieces': 500
+    },
+    'individual_final': {
+        'time': 75,
+        'pieces': 500,
     }
 }
 

@@ -98,7 +98,7 @@ def main():
     process.crawl(WjpcSpider,
         division='individual',
         rounds=list(string.ascii_uppercase[0:6]) + ['S1', 'S2', 'final'],
-        division_options_key = lambda _: 'individual',
+        division_options_key = lambda r: 'individual_final' if r == 'final' else 'individual',
         parse_results=parse_individual_results
     )
     process.crawl(WjpcSpider,
